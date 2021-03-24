@@ -1,7 +1,7 @@
 <template>
   <Block @closeBlock="closeModal($event)" v-if="isOpenedBlock"></Block>
   <button v-if="isStartButtonVisible" @click="reactionInterval">Start this shit</button>
-  <Result @buttonAgain="playAgain" v-if="isResultVisible" :result="reactionTime"/>
+  <Result @buttonAgain="playAgain" v-if="isResultVisible" :result="reactionTime" :aResults="results"/>
 </template>
 
 <script>
@@ -20,7 +20,8 @@ export default {
       isStartButtonVisible: true,   
       isResultVisible: false,
       randomTimeGenerated: 4,
-      reactionTime: Number
+      reactionTime: Number,
+      results: []
     } 
   },
 
@@ -40,6 +41,7 @@ export default {
       this.isOpenedBlock = !this.isOpenedBlock;
       this.reactionTime = reactionTime;
       this.isResultVisible = !this.isResultVisible;
+      this.results.push(reactionTime);
     },
     playAgain(){
       this.isOpenedBlock = false;

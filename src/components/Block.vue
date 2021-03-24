@@ -31,7 +31,6 @@ export default {
             this.$emit("closeBlock", this.reactionTime)
         }
     }
-
 }
 </script>
 
